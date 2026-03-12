@@ -1,0 +1,197 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background-color: @background;
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'FiraCode Nerd Font', 'JetBrainsMono Nerd Font', monospace;
+  font-size: 13px;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+/* ── Workspaces ──────────────────────────────── */
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+  color: @foreground;
+}
+
+#workspaces button.empty {
+  opacity: 0.4;
+}
+
+#workspaces button.active {
+  opacity: 1;
+  font-weight: bold;
+}
+
+/* ── Omarchy logo ────────────────────────────── */
+#custom-omarchy {
+  margin: 0 8px;
+}
+
+/* ── Window title ────────────────────────────── */
+#window {
+  opacity: 0.55;
+  font-style: italic;
+  margin-left: 10px;
+  font-size: 11px;
+}
+
+/* ── MPRIS ───────────────────────────────────── */
+#mpris {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+#mpris.playing {
+  opacity: 1;
+}
+
+#mpris.paused {
+  opacity: 0.45;
+  font-style: italic;
+}
+
+/* ── Right side: consistent 8px spacing ──────── */
+#custom-weather,
+#custom-arch-updates,
+#custom-uptime,
+#custom-power-profile,
+#disk,
+#custom-gpu,
+#custom-docker,
+#custom-ping,
+#network,
+#memory,
+#bluetooth,
+#pulseaudio,
+#tray {
+  margin: 0 8px;
+}
+
+#clock {
+  margin: 0 8px;
+}
+
+#clock.date {
+  margin: 0 2px 0 8px;
+}
+
+#clock.time {
+  margin: 0 8px 0 2px;
+}
+
+/* CPU + temp paired tight, normal gap to others */
+#cpu {
+  margin: 0 2px 0 8px;
+}
+
+#temperature {
+  margin: 0 8px 0 2px;
+}
+
+/* ── Indicators ──────────────────────────────── */
+#custom-voxtype,
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  margin: 0 8px;
+  font-size: 10px;
+}
+
+#custom-screenrecording-indicator.active,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: #a55555;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
+}
+
+/* ── Ping colors ─────────────────────────────── */
+#custom-ping.good {
+  color: #549e6a;
+}
+
+#custom-ping.warn {
+  color: #E5C736;
+}
+
+#custom-ping.bad {
+  color: #FF5345;
+}
+
+/* ── GPU temp colors ─────────────────────────── */
+#custom-gpu.hot {
+  color: #FF5345;
+}
+
+#custom-gpu.warm {
+  color: #E5C736;
+}
+
+/* ── Temperature critical ────────────────────── */
+#temperature.critical {
+  color: #FF5345;
+}
+
+/* ── Docker ──────────────────────────────────── */
+#custom-docker.running {
+  color: #549e6a;
+}
+
+#custom-docker.stopped {
+  opacity: 0.45;
+}
+
+/* ── Updates accent ──────────────────────────── */
+#custom-arch-updates {
+  color: #ACD4CF;
+}
+
+/* ── Power profile ───────────────────────────── */
+#custom-power-profile.performance {
+  color: #FF5345;
+}
+
+#custom-power-profile.balanced {
+  color: #E5C736;
+}
+
+#custom-power-profile.powersaver {
+  color: #549e6a;
+}
+
+/* ── Muted audio ─────────────────────────────── */
+#pulseaudio.muted {
+  opacity: 0.45;
+}
+
+/* ── Tooltips ────────────────────────────────── */
+tooltip {
+  background: @background;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+.hidden {
+  opacity: 0;
+}
