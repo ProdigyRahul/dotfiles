@@ -6,8 +6,6 @@
 source ~/.local/share/omarchy/default/bash/rc
 
 # Add your own exports, aliases, and functions here.
-#
-# Make an alias for invoking commands you use constantly
 alias cc='claude --dangerously-skip-permissions'
 
 # Java configuration
@@ -39,3 +37,29 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 set -h 2>/dev/null
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+
+# zoxide
+eval "$(zoxide init bash)"
+
+# yazi: cd to last dir on quit
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
