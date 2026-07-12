@@ -1,12 +1,27 @@
-# If not running interactively, don't do anything (leave this at the top of this file)
+export PATH="/home/rahul/.nvm/versions/node/v24.16.0/bin:$PATH"
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# All the default Omarchy aliases and functions
-# (don't mess with these directly, just overwrite them here!)
-source ~/.local/share/omarchy/default/bash/rc
-
-# Add your own exports, aliases, and functions here.
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -la'
+alias la='ls -A'
+alias l='ls -CF'
+alias vim='nvim'
+alias vi='nvim'
+alias lg='lazygit'
+alias ff='fastfetch'
 alias cc='claude --dangerously-skip-permissions'
+
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR=nvim
+export VISUAL=nvim
+
+eval "$(starship init bash)"
 
 # Java configuration
 export JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk
@@ -34,18 +49,20 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NVM configuration
-set -h 2>/dev/null
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"
 
 # pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PNPM_HOME="/home/rahul/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
+# pnpm end
 
-# zoxide
+# opencode
+export PATH=/home/rahul/.opencode/bin:$PATH
+
 eval "$(zoxide init bash)"
 
 # yazi: cd to last dir on quit
@@ -58,8 +75,7 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-# linuxbrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-
-# go
 export PATH="$HOME/go/bin:$PATH"
+
+. "$HOME/.local/bin/env"
